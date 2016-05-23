@@ -11,13 +11,6 @@
  alias ls='ls $LS_OPTIONS'
  alias ll='ls $LS_OPTIONS -l'
  alias l='ls $LS_OPTIONS -lA'
-#
-# Some more alias to avoid making mistakes:
-# alias rm='rm -i'
-# alias cp='cp -i'
-# alias mv='mv -i'
-
-
 
 export HISTFILESIZE=20000
 export HISTSIZE=10000
@@ -99,8 +92,6 @@ alias lsd="ls -alF | grep /$"
 alias free='free -h'
 alias df='df -h'
 alias h="history|grep "
-
-# This is GOLD for finding out what is taking so much space on your drives!
 alias diskspace="du -S | sort -n -r |more"
 alias torrent="deluge-console info"
 alias mplayer="mplayer -speed 1.28  -msgcolor -msgmodule"
