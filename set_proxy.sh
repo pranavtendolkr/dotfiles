@@ -36,6 +36,28 @@ printf \
 
  rm -rf lol.t
 
+
+#docker
+# if not 16.04. will bother with later version after next LTS
+if [ ! -Z $(lsb_release -r| grep "16.04" ) ]; then
+ printf \
+ "export http_proxy=\"http://$3:$4@$1:$2/\";\n\
+  export https_proxy=\"http://$3:$4@$1:$2/\";\n\
+  export HTTP_PROXY=\"http://$3:$4@$1:$2/\";\n\
+  export HTTPS_PROXY=\"http://$3:$4@$1:$2/\";\n\
+  Acquire::https::proxy \"https://$3:$4@$1:$2/\";\n" > /etc/docker/default;
+else
+  mkdir -p /etc/systemd/system/docker.service.d/
+  printf \
+  "Environment=\"HTTP_PROXY=http://$3:$4@$1:$2/\"\n\
+   Environment=\"HTTPS_PROXY=http://$3:$4@$1:$2/\"\n\
+   Environment=\"NO_PROXY=localhost,127.0.0.1,localaddress,.localdomain.com\"\n\
+  "> /etc/systemd/system/docker.service.d/http-proxy.conf
+
+fi
+
+
+
  git config --global http.proxy http://$3:$4@$1:$2
 
 else
