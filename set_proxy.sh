@@ -53,6 +53,9 @@ else
    Environment=\"HTTPS_PROXY=http://$3:$4@$1:$2/\"\n\
    Environment=\"NO_PROXY=localhost,127.0.0.1,localaddress,.localdomain.com\"\n\
   "> /etc/systemd/system/docker.service.d/http-proxy.conf
+  systemctl daemon-reload
+  systemctl restart docker
+
 
 fi
 
