@@ -44,8 +44,7 @@ if [ ! -Z $(lsb_release -r| grep "16.04" ) ]; then
  "export http_proxy=\"http://$3:$4@$1:$2/\";\n\
   export https_proxy=\"http://$3:$4@$1:$2/\";\n\
   export HTTP_PROXY=\"http://$3:$4@$1:$2/\";\n\
-  export HTTPS_PROXY=\"http://$3:$4@$1:$2/\";\n\
-  Acquire::https::proxy \"https://$3:$4@$1:$2/\";\n" > /etc/docker/default;
+  export HTTPS_PROXY=\"http://$3:$4@$1:$2/\";\n" > /etc/docker/default;
 else
   mkdir -p /etc/systemd/system/docker.service.d/
   printf \
